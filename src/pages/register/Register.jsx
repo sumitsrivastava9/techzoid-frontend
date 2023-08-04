@@ -20,7 +20,7 @@ function Register() {
         password,
       });
       res.data &&
-        window.location.replace(`https://techzoid.onrender.com/login`);
+        window.location.replace(`https://techzoid-blog.onrender.com/login`);
     } catch (err) {
       setError(true);
     }
@@ -69,7 +69,7 @@ function Register() {
         {error && <span style={{ color: 'red' }}>Something went wrong</span>}
       </form>
       <Link
-        to='https://techzoid.onrender.com/login'
+        to='https://techzoid-blog.onrender.com/login'
         className='btn btn-dark login-button'
       >
         {' '}

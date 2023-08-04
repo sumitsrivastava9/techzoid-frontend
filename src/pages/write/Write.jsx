@@ -30,7 +30,7 @@ export default function Write() {
     try {
       const res = await axios.post(`${API_URL}/posts`, newPost);
       window.location.replace(
-        `https://techzoid.onrender.com/post/` + res.data._id
+        `https://techzoid-blog.onrender.com/post/` + res.data._id
       );
     } catch (err) {}
   };
