@@ -1,2 +1,2 @@
-const API_URL = 'https://techzoidbackend.onrender.com/api';
+const API_URL = 'https://techzoidserver.onrender.com/api';
 export default API_URL;
