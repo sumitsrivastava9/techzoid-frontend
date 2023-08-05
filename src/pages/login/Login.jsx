@@ -56,10 +56,7 @@ function Login() {
           Login
         </button>
       </form>
-      <Link
-        to='https://techzoid-blog.onrender.com/register'
-        className='btn btn-dark register-button'
-      >
+      <Link to='/register' className='btn btn-dark register-button'>
         {' '}
         Register If new user
       </Link>
