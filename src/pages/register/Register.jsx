@@ -68,10 +68,7 @@ function Register() {
         </button>
         {error && <span style={{ color: 'red' }}>Something went wrong</span>}
       </form>
-      <Link
-        to='https://techzoid-blog.onrender.com/login'
-        className='btn btn-dark login-button'
-      >
+      <Link to='/login' className='btn btn-dark login-button'>
         {' '}
         Login If existing user
       </Link>
