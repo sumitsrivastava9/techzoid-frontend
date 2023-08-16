@@ -1,4 +1,4 @@
-import { useContext, useRef } from 'react';
+import { useState, useContext, useRef } from 'react';
 import './login.css';
 import { Link } from 'react-router-dom';
 import { Context } from '../../context/Context';
@@ -6,6 +6,7 @@ import axios from 'axios';
 import API_URL from '../../Config';
 
 function Login() {
+  const [passShow, setPassShow] = useState(false);
   const userRef = useRef();
   const passwordRef = useRef();
   const { dispatch, isFetching } = useContext(Context);
@@ -37,16 +38,23 @@ function Login() {
             ref={userRef}
           />
         </div>
-        <div className='mb-3'>
+        <div className='mb-3 inputPassword'>
           <label htmlFor='exampleInputPassword1' className='form-label'>
             Password
           </label>
           <input
-            type='password'
+            type={!passShow ? 'password' : 'text'}
             className='form-control'
             id='exampleInputPassword1'
             ref={passwordRef}
           />
+          <span onClick={() => setPassShow(!passShow)} className='showPassword'>
+            {!passShow ? (
+              <i className='fa-regular fa-eye'></i>
+            ) : (
+              <i className='fa-regular fa-eye-slash'></i>
+            )}
+          </span>
         </div>
         <button
           type='submit'

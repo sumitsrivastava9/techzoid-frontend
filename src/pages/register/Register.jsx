@@ -53,17 +53,17 @@ function Register() {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div className='mb-3'>
+        <div className='mb-3 inputPassword'>
           <label for='exampleInputPassword1' className='form-label'>
             Password
           </label>
           <input
-            type='password'
+            type={!passShow ? 'password' : 'text'}
             className='form-control'
             id='exampleInputPassword1'
             onChange={(e) => setPassword(e.target.value)}
           />
-          <span onClick={() => setPassShow(!passShow)}>
+          <span onClick={() => setPassShow(!passShow)} className='showPassword'>
             {!passShow ? (
               <i className='fa-regular fa-eye'></i>
             ) : (

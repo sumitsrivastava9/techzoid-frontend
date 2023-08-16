@@ -48,3 +48,15 @@ button {
 .disabled-btn:disabled {
   cursor: not-allowed;
 }
+.inputPassword {
+  position: relative;
+}
+.showPassword {
+  position: absolute;
+  right: 5px;
+  top: 41px;
+  cursor: pointer;
+}
+.showPassword i {
+  color: black;
+}
