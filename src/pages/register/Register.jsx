@@ -9,6 +9,7 @@ function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
+  const [passShow, setPassShow] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -62,6 +63,13 @@ function Register() {
             id='exampleInputPassword1'
             onChange={(e) => setPassword(e.target.value)}
           />
+          <span onClick={() => setPassShow(!passShow)}>
+            {!passShow ? (
+              <i className='fa-regular fa-eye'></i>
+            ) : (
+              <i className='fa-regular fa-eye-slash'></i>
+            )}
+          </span>
         </div>
         <button className='btn btn-success' type='submit'>
           Register
