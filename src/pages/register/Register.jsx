@@ -10,20 +10,37 @@ function Register() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
   const [passShow, setPassShow] = useState(false);
+  const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(false);
-    try {
-      const res = await axios.post(`${API_URL}/auth/register`, {
-        username,
-        email,
-        password,
-      });
-      res.data &&
-        window.location.replace(`https://techzoid-blog.onrender.com/login`);
-    } catch (err) {
-      setError(true);
+    if (username == '') {
+      alert('Username must not be empty');
+    } else if (username.length < 4) {
+      alert('Username must be of at least 4 characters');
+    } else if (email == '') {
+      alert('Email must not be empty');
+    } else if (!email.includes('@')) {
+      alert('Not a Valid Email');
+    } else if (password == '') {
+      alert('Passsword must not be empty');
+    } else if (!regex.test(password)) {
+      alert(
+        'Passsword must be at least 8 characters in length including a uppercase letter, a lowercase letter and a digit'
+      );
+    } else {
+      try {
+        const res = await axios.post(`${API_URL}/auth/register`, {
+          username,
+          email,
+          password,
+        });
+        res.data &&
+          window.location.replace(`https://techzoid-blog.onrender.com/login`);
+      } catch (err) {
+        setError(true);
+      }
     }
   };
   return (
@@ -39,29 +56,35 @@ function Register() {
             className='form-control'
             id='username'
             onChange={(e) => setUsername(e.target.value)}
+            data-bs-toggle='tooltip'
+            data-bs-placement='bottom'
+            title='Username must contain 4 characters'
           />
         </div>
         <div className='mb-3'>
-          <label for='exampleInputEmail1' className='form-label'>
+          <label for='InputEmail' className='form-label'>
             Email address
           </label>
           <input
             type='email'
             className='form-control'
-            id='exampleInputEmail1'
+            id='InputEmail'
             aria-describedby='emailHelp'
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className='mb-3 inputPassword'>
-          <label for='exampleInputPassword1' className='form-label'>
+          <label for='InputPassword' className='form-label'>
             Password
           </label>
           <input
             type={!passShow ? 'password' : 'text'}
             className='form-control'
-            id='exampleInputPassword1'
+            id='InputPassword'
             onChange={(e) => setPassword(e.target.value)}
+            data-bs-toggle='tooltip'
+            data-bs-placement='bottom'
+            title='Password must contain 8 characters including an UPPERCASE, a LOWERCASE and a NUMBER'
           />
           <span onClick={() => setPassShow(!passShow)} className='showPassword'>
             {!passShow ? (

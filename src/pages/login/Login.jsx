@@ -7,6 +7,7 @@ import API_URL from '../../Config';
 
 function Login() {
   const [passShow, setPassShow] = useState(false);
+  const [inpVal, setInpVal] = useState({ username: '', InputPassword1: '' });
   const userRef = useRef();
   const passwordRef = useRef();
   const { dispatch, isFetching } = useContext(Context);
@@ -39,13 +40,13 @@ function Login() {
           />
         </div>
         <div className='mb-3 inputPassword'>
-          <label htmlFor='exampleInputPassword1' className='form-label'>
+          <label htmlFor='InputPassword1' className='form-label'>
             Password
           </label>
           <input
             type={!passShow ? 'password' : 'text'}
             className='form-control'
-            id='exampleInputPassword1'
+            id='InputPassword1'
             ref={passwordRef}
           />
           <span onClick={() => setPassShow(!passShow)} className='showPassword'>
